@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from beca.views import paginaprincipal
+from beca.views import AumentarYVer
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',paginaprincipal,name='index'),
+    path('AumentarPopularidad/<id>',AumentarYVer)
 ]
