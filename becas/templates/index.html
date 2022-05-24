@@ -14,6 +14,15 @@
             height: 27rem;
             background: gray;
         }
+        .container {
+          padding-top: 50px;
+        }
+        .card {
+          display: block;
+        }
+        .row {
+          padding-top: 50px;
+        }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -55,6 +64,58 @@
           </div>
 
        
+    </div>
+    <div class="container">
+      <h2>Noticias del Mundo</h2>
+      
+      <div class="row">
+        {% for article in nytimes1 %}
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{article.section}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{article.title}}</h5>
+              <p class="card-text">{{article.abstract}}</p>
+              <a href="{{article.url}}" class="btn btn-primary">Mas Información</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+
+      <div class="row">
+        {% for article in nytimes2 %}
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{article.section}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{article.title}}</h5>
+              <p class="card-text">{{article.abstract}}</p>
+              <a href="{{article.url}}" class="btn btn-primary">Mas Información</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+
+      <div class="row">
+        {% for article in nytimes3 %}
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{article.section}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{article.title}}</h5>
+              <p class="card-text">{{article.abstract}}</p>
+              <a href="{{article.url}}" class="btn btn-primary">Mas Información</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+
     </div>
 </body>
 </html>
