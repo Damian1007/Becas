@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
     <!-- Required meta tags -->
@@ -50,7 +51,7 @@
                 <div class="carousel-caption d-none d-md-block">
                   <h5>{{beca.Nombre}}</h5>
                   <p>{{beca.Pais}}</p>
-                  <a href="AumentarPopularidad/{{beca.id}}" class="btn">Leer mas</a>
+                  <a href="{% url 'detalleBeca' beca.id %}" class="btn">Leer mas</a>
                 </div>
               </div>
               {% endfor %}

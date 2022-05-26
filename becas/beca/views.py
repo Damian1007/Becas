@@ -32,10 +32,10 @@ def paginaprincipal(request):
     }
     return render(request,'listar.html',contexto)
 
-def AumentarYVer(request,id):
-    beca = Beca.objects.get(id=id)
-    beca.Popularidad = beca.Popularidad + 1
-    beca.save()
+# def AumentarYVer(request,id):
+#     beca = Beca.objects.get(id=id)
+#     beca.Popularidad = beca.Popularidad + 1
+#     beca.save()
 
 def eliminarBeca(request,id):
     beca = Beca.objects.get(id=id)
@@ -44,14 +44,9 @@ def eliminarBeca(request,id):
 
 def detalleBeca(request,id):
     beca = Beca.objects.get(id=id)
-    if request.method == "POST":
-        form = BecaForm(request.POST, instance=beca)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-        if 'Atras' in request.POST:
-            return redirect('index')
-    else:
-        form = BecaForm(instance=beca)
-    context = {'form': form}
-    return render(request,"detalleBeca.html",context)
+    beca.Popularidad = beca.Popularidad + 1
+    beca.save()
+    contexto = {
+        'beca': beca
+    }
+    return render(request,'detalleBeca.html',contexto)
