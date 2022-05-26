@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block principal %}
+<div class="container text-center">
+    <table class="table table-striped table-dark">
+       <thead>
+         <tr>
+           <th scope="col">Nombre</th>
+           <th scope="col">Categoria</th>
+           <th scope="col">Pais</th>
+           <th scope="col">Universidad</th>
+           <th scope="col">Accion</th>
+         </tr>
+       </thead>
+       <tbody>
+       {% for beca in listarBeca %}
+         <tr>
+           <th scope="row">{{ beca.Nombre }}</th> 
+           <td>{{ beca.Categoria }}</td>
+           <td>{{ beca.Pais }}</td>
+           <td>{{ beca.Universidad }}</td>
+           <td>
+              <a class="btn btn-outline-primary btn-sm" href="{% url 'detalleBeca' beca.id %}"> Detalle </a>
+              <a class="btn btn-outline-danger btn-sm" href="{% url 'eliminar' beca.id %}"> Eliminar </a>
+           </td>
+         </tr>
+         {% endfor %}
+       </tbody>
+    </table>
+</div>
+{% endblock %}
+    

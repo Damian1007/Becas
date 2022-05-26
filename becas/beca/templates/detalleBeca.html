@@ -1,0 +1,15 @@
+{% extends 'detalle.html' %}
+{% block principal %}
+
+<div class="container text-center">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form.as_p}}
+            <input class="btn btn-outline-primary btn-sm" type="submit" name="Atras" value="Atras">
+            
+        </div>
+      </form>
+</div>
+
+{% endblock %}
