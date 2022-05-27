@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Beca
 import requests
+from .forms import BecaForm
+
+
 # Create your views here.
 def paginaprincipal(request):
     becas = Beca.objects.all().order_by('-Popularidad')[:5]
+    listarBeca = Beca.objects.all()
     response = requests.get("https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=aa53o84KJwAk5rqw9AFhnlw93mAtaRfA")
     dataclean = response.json()
     results = dataclean['results']
@@ -18,18 +22,55 @@ def paginaprincipal(request):
     fila_n2 = resultsindex[3:6]
     fila_n3 = resultsindex[6:9]
     
-
-    
     contexto = {
         'bequitas': becas,
+        'listarBeca': listarBeca,
         'nytimes1': fila_n1,
         'nytimes2': fila_n2,
         'nytimes3': fila_n3,
 
     }
-    return render(request,'index.html',contexto)
+    return render(request,'listar.html',contexto)
 
-def AumentarYVer(request,id):
+# def AumentarYVer(request,id):
+#     beca = Beca.objects.get(id=id)
+#     beca.Popularidad = beca.Popularidad + 1
+#     beca.save()
+
+def eliminarBeca(request,id):
+    beca = Beca.objects.get(id=id)
+    beca.delete()
+    return redirect('index')
+
+def detalleBeca(request,id):
     beca = Beca.objects.get(id=id)
     beca.Popularidad = beca.Popularidad + 1
     beca.save()
+    contexto = {
+        'beca': beca
+    }
+    return render(request,'detalleBeca.html',contexto)
+
+def editarbecaget(request,id):
+    beca = Beca.objects.get(id=id)
+    return render(request,'editar.html', {"beca": beca})
+
+def editarbecaput(request,id):
+
+    Nombre = request.POST['TxNombre']
+    Categoria = request.POST['TxCategoria']
+    Porcentaje = request.POST['Porcentaje_F']
+    Pais = request.POST['Pais']
+    Universidad = request.POST['Universidad']
+    Requerimientos = request.POST['Requerimientos']
+    
+    beca = Beca.objects.get(id=id)
+    beca.Nombre = Nombre
+    beca.Categoria = Categoria
+    beca.Porcentaje_F= Porcentaje
+    beca.Pais = Pais
+    beca.Universidad = Universidad
+    beca.Requerimientos = Requerimientos
+    beca.save()
+
+    return redirect('/')
