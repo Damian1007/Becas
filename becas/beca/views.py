@@ -50,3 +50,29 @@ def detalleBeca(request,id):
         'beca': beca
     }
     return render(request,'detalleBeca.html',contexto)
+
+def  editarbeca(request,id):
+    beca = Beca.objects.get(id=id)
+    return render(request,'editar.html', {"beca": beca})
+
+def  editarbeca2(request,id):
+
+    Nombre = request.POST['TxNombre']
+    Categoria = request.POST['TxCategoria']
+    Porcentaje = request.POST['Porcentaje_F']
+    Pais = request.POST['Pais']
+    Universidad = request.POST['Universidad']
+    Requerimientos = request.POST['Requerimientos']
+    
+    beca = Beca.objects.get(id=id)
+
+    
+    beca.Nombre = Nombre
+    beca.Categoria = Categoria
+    beca.Porcentaje_F= Porcentaje
+    beca.Pais = Pais
+    beca.Universidad = Universidad
+    beca.Requerimientos = Requerimientos
+    beca.save()
+
+    return redirect('/')

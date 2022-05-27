@@ -22,6 +22,7 @@
            <td>
               <a class="btn btn-outline-primary btn-sm" href="{% url 'detalleBeca' beca.id %}"> Detalle </a>
               <a class="btn btn-outline-danger btn-sm" href="{% url 'eliminar' beca.id %}"> Eliminar </a>
+              <a class="btn btn btn-warning btn-sm" href="{% url 'editarbeca' beca.id %}"> Editar </a>
            </td>
          </tr>
          {% endfor %}
