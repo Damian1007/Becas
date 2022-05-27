@@ -42,16 +42,22 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>BECARIOS SIUUU</h5>
-                  <p>TOP 5 BECAS.</p>
+                  <h2>PROYECTO GESTION DE BECAS Y API DEL NYT</h5>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <h5>TOP 5 BECAS.</h5>
                 </div>
               </div>
               {% for beca in bequitas %}
               <div class="carousel-item">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>{{beca.Nombre}}</h5>
-                  <p>{{beca.Pais}}</p>
-                  <a href="{% url 'detalleBeca' beca.id %}" class="btn">Leer mas</a>
+                  
+
+                  <h2>{{beca.Nombre}}</h2>
+                  <h6>{{beca.Pais}}</h6>
+                  <a href="{% url 'detalleBeca' beca.id %}" class="btn btn-outline-primary btn-sm">Leer mas</a>
                 </div>
               </div>
               {% endfor %}

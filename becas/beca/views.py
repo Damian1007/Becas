@@ -51,11 +51,11 @@ def detalleBeca(request,id):
     }
     return render(request,'detalleBeca.html',contexto)
 
-def  editarbeca(request,id):
+def editarbecaget(request,id):
     beca = Beca.objects.get(id=id)
     return render(request,'editar.html', {"beca": beca})
 
-def  editarbeca2(request,id):
+def editarbecaput(request,id):
 
     Nombre = request.POST['TxNombre']
     Categoria = request.POST['TxCategoria']
@@ -65,8 +65,6 @@ def  editarbeca2(request,id):
     Requerimientos = request.POST['Requerimientos']
     
     beca = Beca.objects.get(id=id)
-
-    
     beca.Nombre = Nombre
     beca.Categoria = Categoria
     beca.Porcentaje_F= Porcentaje
