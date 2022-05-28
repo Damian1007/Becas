@@ -4,4 +4,4 @@ from django.forms import ModelForm
 class BecaForm(ModelForm):
     class Meta:
         model = Beca
-        fields = '__all__'
+        fields = ['Nombre', 'Categoria', 'Porcentaje_F' ,'Pais' ,'Universidad' ,'Requirimientos', 'Popularidad']

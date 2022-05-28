@@ -37,23 +37,18 @@ def paginaprincipal(request):
     return render(request,'listar.html',contexto)
 
 def agregarBeca(request):
-    Nombre = request.POST['TxNombre']
-    Categoria = request.POST['TxCategoria']
-    Porcentaje = request.POST['Porcentaje_F']
-    Pais = request.POST['Pais']
-    Universidad = request.POST['Universidad']
-    Requerimientos = request.POST['Requerimientos']
-    
-    beca = BecaForm(request.POST)
-    beca.Nombre = Nombre
-    beca.Categoria = Categoria
-    beca.Porcentaje_F= Porcentaje
-    beca.Pais = Pais
-    beca.Universidad = Universidad
-    beca.Requerimientos = Requerimientos
-    beca.save()
+    if request.method == "POST":
+        form = BecaForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('index')
 
-    return render(request, 'agregar.html')
+    else:
+        form = BecaForm()
+
+    context = {'form' : form}
+    return render(request, 'agregar.html', context)
 
 # def AumentarYVer(request,id):
 #     beca = Beca.objects.get(id=id)
