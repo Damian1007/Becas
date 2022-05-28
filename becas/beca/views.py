@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -34,6 +35,25 @@ def paginaprincipal(request):
 
     }
     return render(request,'listar.html',contexto)
+
+def agregarBeca(request):
+    Nombre = request.POST['TxNombre']
+    Categoria = request.POST['TxCategoria']
+    Porcentaje = request.POST['Porcentaje_F']
+    Pais = request.POST['Pais']
+    Universidad = request.POST['Universidad']
+    Requerimientos = request.POST['Requerimientos']
+    
+    beca = BecaForm(request.POST)
+    beca.Nombre = Nombre
+    beca.Categoria = Categoria
+    beca.Porcentaje_F= Porcentaje
+    beca.Pais = Pais
+    beca.Universidad = Universidad
+    beca.Requerimientos = Requerimientos
+    beca.save()
+
+    return render(request, 'agregar.html')
 
 # def AumentarYVer(request,id):
 #     beca = Beca.objects.get(id=id)
